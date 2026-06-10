@@ -1,5 +1,8 @@
 #!/bin/bash
+set -e 
 
+apt-get update -y
+apt-get upgrade -y
 apt-get install -y openjdk-21-jre-headless curl wget
 
 mkdir -p /opt/minecraft/server
@@ -12,7 +15,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/opt/minecraft/server
-ExecStart=/usr/bin/java -jar server.jar nogui
+ExecStart=/usr/bin/java -Xmx3G -Xms1G -jar server.jar nogui
 Restart=on-failure
 RestartSec=5
 
