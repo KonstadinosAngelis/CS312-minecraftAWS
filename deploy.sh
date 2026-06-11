@@ -21,6 +21,7 @@ sleep 60
 
 # Run the setup script on the instance via SSM
 aws ssm send-command \
+  --no-cli-pager \
   --instance-ids "$INSTANCE_ID" \
   --document-name "AWS-RunShellScript" \
   --parameters "{\"commands\":[
